@@ -1,5 +1,7 @@
 # Simplicity in practice
 
+when your function is quite complicated should you divide it into several smaller functions and use a pipe? (threading macro in clojure)?
+
 ## Problem: Mission Acceptance
 
 ## Background
@@ -16,3 +18,24 @@ we need to develop a function in Clojure that manages the acceptance of missions
 ```clojure
 (accept 123 12)  ; Might return {:state :accepted :mission-id 123 :user-id 12}
 (accept 999 12)  ; Might return {:error "Mission does not exist", :mission-id 999 :user-id 12}
+```
+
+## Solutions
+
+### [Solution 1](src/s1/accept_1.clj)
+
+
+
+we make a [single function](src/s1/accept_1.clj#L26-L38) and test everything together resulting in quite [complex tests](src/s1/accept_1.clj#L40-L98) (especially compared to the ones in solution 2)
+
+### [Solution 2](src/s2/accept_2.clj)
+
+we break the [main function](src/s2/accept_2.clj#L64-L71) into several functions and use a pipe, then test the pipe and the individual functions separately
+
+## Conclusion
+
+Compare the readability of the two functions:
+[solution 1](src/s1/accept_1.clj#L26-L38) vs 
+[solution 2](src/s2/accept_2.clj#L64-L71)
+
+Then imaging you'd have to modify or extend the logic later. Which one would be easier to work with? 
