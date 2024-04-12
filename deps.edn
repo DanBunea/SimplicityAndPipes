@@ -1,0 +1,11 @@
+{:paths ["src" ]
+ :deps {tortue/spy                     {:mvn/version "2.13.0"}
+        com.hyperfiddle/rcf {:mvn/version "20220926-202227"}}
+ 
+ :aliases
+ {:dev {:extra-paths ["dev"]
+        :extra-deps {org.clojure/tools.namespace {:mvn/version "1.0.0"}
+                     djblue/portal {:mvn/version "0.34.2"}}}
+  :test {:jvm-opts ["-Dhyperfiddle.rcf.generate-tests=true"]
+         :extra-deps  {lambdaisland/kaocha {:mvn/version "1.60.945"}}
+         :main-opts   ["-m" "kaocha.runner"]}}}
